@@ -1,13 +1,11 @@
 from django.shortcuts import render
 
-todos = [
-    {'title': 'Clean the car', 'complete': False},
-    {'title': 'Pickup kids from school', 'complete': True}
-]
+from .models import SingleTodo
+
 
 def home_page(request):
     context = {
-        'todos': todos
+        'todos': SingleTodo.objects.all()
     }
     return render(request, 'todo/home.html', context)
 
